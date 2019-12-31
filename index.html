@@ -12,6 +12,10 @@
 </head>
 
 <body>
+  <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-database.js"></script>
+  <script src="configuracao-firebase.js"></script>
+
   <nav class="cabecalho">
     <img src="ativos/logo.svg" alt="Logo OKR" class="cabecalho__logo">
     <button type="button" class="botao botao_com-icone" onclick="abrirDialogoDeCriacaoDeObjetivo()">
@@ -74,35 +78,37 @@
   </section>
 
   <dialog class="dialogo">
-    <form class="formulario">
-      <label for="nomeDoObjetivo">Nome do objetivo</label>
-      <input type="text" placeholder="Insira aqui o nome do seu objetivo">
+    <div class="dialogo__corpo">
+      <form class="formulario">
+        <label for="nomeDoObjetivo">Nome do objetivo</label>
+        <input type="text" id="nomeDoObjetivo" placeholder="Insira aqui o nome do seu objetivo">
 
-      <label for="descricaoDoObjetivo">Descrição</label>
-      <textarea rows="3" placeholder="Insira aqui o nome do seu objetivo"></textarea>
+        <label for="descricaoDoObjetivo">Descrição</label>
+        <textarea rows="3" id="descricaoDoObjetivo" placeholder="Insira aqui o nome do seu objetivo"></textarea>
 
-      <hr class="divisor">
+        <hr class="divisor">
 
-      <label for="key1">Key Result 1</label>
-      <input type="text" id="key1" placeholder="Insira aqui o nome do seu objetivo">
+        <label for="key1">Key Result 1</label>
+        <input type="text" id="key1" placeholder="Insira aqui o nome do seu objetivo">
 
-      <div class="container-flexivel">
-        <div>
-          <label for="valorInicial">Valor inicial</label>
-          <input type="number" id="valorInicial">
+        <div class="container-flexivel">
+          <div>
+            <label for="valorInicial">Valor inicial</label>
+            <input type="number" id="valorInicial">
+          </div>
+
+          <div>
+            <label for="valorFinal">Valor final</label>
+            <input type="number" id="valorFinal">
+          </div>
         </div>
 
-        <div>
-          <label for="valorFinal">Valor final</label>
-          <input type="number" id="valorFinal">
-        </div>
-      </div>
-
-      <button type="button" class="botao botao_branco botao_com-icone">
-        <i data-feather="plus-circle"></i>
-        Adicionar novo Key Result
-      </button>
-    </form>
+        <button type="button" class="botao botao_branco botao_com-icone">
+          <i data-feather="plus-circle"></i>
+          Adicionar novo Key Result
+        </button>
+      </form>
+    </div>
 
 
     <div class="dialogo__rodape">
@@ -111,7 +117,7 @@
         Cancelar
       </button>
 
-      <button type="button" class="botao botao_com-icone">
+      <button type="button" class="botao botao_com-icone" onclick="criarObjetivo()">
         <i data-feather="save"></i>
         Salvar objetivo
       </button>
@@ -129,11 +135,10 @@
       modal.close()
     }
 
-  </script>
-
-  <script>
     feather.replace()
   </script>
+
+  <script src="style.js"></script>
 </body>
 
 </html>
