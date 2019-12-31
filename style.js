@@ -1,6 +1,7 @@
 let lista = []
 let nomeDoBanco = 'okr';
 let inputDeInsercaoDoNomeDoObjetivo = document.getElementById('nomeDoObjetivo')
+
 function criarObjetivo() {
   let idDoItem;
 
@@ -12,5 +13,4 @@ function criarObjetivo() {
     nomeDoObjetivo: inputDeInsercaoDoNomeDoObjetivo.value,
     id: idDoItem
   })
-  return false
 }
