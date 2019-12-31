@@ -14,7 +14,7 @@
 <body>
   <nav class="cabecalho">
     <img src="ativos/logo.svg" alt="Logo OKR" class="cabecalho__logo">
-    <button class="botao botao_com-icone" onclick="abrirDialogoDeCriacaoDeObjetivo()">
+    <button type="button" class="botao botao_com-icone" onclick="abrirDialogoDeCriacaoDeObjetivo()">
       <i data-feather="plus-circle"></i>
       Criar novo objetivo
     </button>
@@ -26,8 +26,9 @@
         <p class="texto texto_cinza texto_espacado">OBJETIVO</p>
         <h2 class="titulo">Economizar em gastos pessoais</h2>
       </div>
+
       <div class="sessao__cabecalho-container-secundario">
-        <button class="botao botao_branco">
+        <button type="button" class="botao botao_branco">
           <i data-feather="more-vertical"></i>
         </button>
       </div>
@@ -37,10 +38,10 @@
       <div class="sessao__item">
         <h2 class="titulo titulo_cinza titulo_pequeno">Gastar 30 menos</h2>
         <div class="regua">
-          <span class="regua__traco"></span>
+          <span class="regua__traco" style="width: 88%"></span>
           <div class="regua__valores">
             <span>0%</span>
-            <span class="regua__valor-dinamico">80%</span>
+            <span class="regua__valor-dinamico" style="left: 88%">88%</span>
             <span>100%</span>
           </div>
         </div>
@@ -49,10 +50,10 @@
       <div class="sessao__item">
         <h2 class="titulo titulo_cinza titulo_pequeno">Gastar 30 menos</h2>
         <div class="regua">
-          <span class="regua__traco"></span>
+          <span class="regua__traco" style="width: 55.5%"></span>
           <div class="regua__valores">
             <span>0%</span>
-            <span class="regua__valor-dinamico">80%</span>
+            <span class="regua__valor-dinamico" style="left: 55.5%">55.5%</span>
             <span>100%</span>
           </div>
         </div>
@@ -62,10 +63,10 @@
     <div class="sessao__rodape">
       <h3 class="titulo titulo_pequeno">Total do objetivo</h3>
       <div class="regua">
-        <span class="regua__traco"></span>
+        <span class="regua__traco" style="width: 71.75%"></span>
         <div class="regua__valores">
           <span>0%</span>
-          <span class="regua__valor-dinamico">80%</span>
+          <span class="regua__valor-dinamico" style="left: 71.75%">71.75%</span>
           <span>100%</span>
         </div>
       </div>
@@ -73,15 +74,61 @@
   </section>
 
   <dialog class="dialogo">
+    <form class="formulario">
+      <label for="nomeDoObjetivo">Nome do objetivo</label>
+      <input type="text" placeholder="Insira aqui o nome do seu objetivo">
 
+      <label for="descricaoDoObjetivo">Descrição</label>
+      <textarea rows="3" placeholder="Insira aqui o nome do seu objetivo"></textarea>
+
+      <hr class="divisor">
+
+      <label for="key1">Key Result 1</label>
+      <input type="text" id="key1" placeholder="Insira aqui o nome do seu objetivo">
+
+      <div class="container-flexivel">
+        <div>
+          <label for="valorInicial">Valor inicial</label>
+          <input type="number" id="valorInicial">
+        </div>
+
+        <div>
+          <label for="valorFinal">Valor final</label>
+          <input type="number" id="valorFinal">
+        </div>
+      </div>
+
+      <button type="button" class="botao botao_branco botao_com-icone">
+        <i data-feather="plus-circle"></i>
+        Adicionar novo Key Result
+      </button>
+    </form>
+
+
+    <div class="dialogo__rodape">
+      <button type="button" class="botao botao_branco botao_com-icone" onclick="fecharDialogo()">
+        <i data-feather="x"></i>
+        Cancelar
+      </button>
+
+      <button type="button" class="botao botao_com-icone">
+        <i data-feather="save"></i>
+        Salvar objetivo
+      </button>
+    </div>
   </dialog>
 
   <script>
-    function abrirDialogoDeCriacaoDeObjetivo() {
-      let modal = document.querySelector('dialog')
+    let modal = document.querySelector('dialog')
 
+    function abrirDialogoDeCriacaoDeObjetivo() {
       modal.showModal()
     }
+
+    function fecharDialogo() {
+      modal.close()
+    }
+
   </script>
 
   <script>
