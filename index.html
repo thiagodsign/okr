@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="estilo.css">
+  <script src="https://unpkg.com/feather-icons"></script>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:500,600,700&display=swap" rel="stylesheet">
+  <title>OKRme</title>
+</head>
+
+<body>
+  <nav class="cabecalho">
+    <img src="ativos/logo.svg" alt="Logo OKR" class="cabecalho__logo">
+    <button class="botao botao_com-icone" onclick="abrirDialogoDeCriacaoDeObjetivo()">
+      <i data-feather="plus-circle"></i>
+      Criar novo objetivo
+    </button>
+  </nav>
+
+  <section class="sessao">
+    <div class="sessao__cabecalho">
+      <div class="sessao__cabecalho-container-primario">
+        <p class="texto texto_cinza texto_espacado">OBJETIVO</p>
+        <h2 class="titulo">Economizar em gastos pessoais</h2>
+      </div>
+      <div class="sessao__cabecalho-container-secundario">
+        <button class="botao botao_branco">
+          <i data-feather="more-vertical"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="sessao__conteudo">
+      <div class="sessao__item">
+        <h2 class="titulo titulo_cinza titulo_pequeno">Gastar 30 menos</h2>
+        <div class="regua">
+          <span class="regua__traco"></span>
+          <div class="regua__valores">
+            <span>0%</span>
+            <span class="regua__valor-dinamico">80%</span>
+            <span>100%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sessao__item">
+        <h2 class="titulo titulo_cinza titulo_pequeno">Gastar 30 menos</h2>
+        <div class="regua">
+          <span class="regua__traco"></span>
+          <div class="regua__valores">
+            <span>0%</span>
+            <span class="regua__valor-dinamico">80%</span>
+            <span>100%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sessao__rodape">
+      <h3 class="titulo titulo_pequeno">Total do objetivo</h3>
+      <div class="regua">
+        <span class="regua__traco"></span>
+        <div class="regua__valores">
+          <span>0%</span>
+          <span class="regua__valor-dinamico">80%</span>
+          <span>100%</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <dialog class="dialogo">
+
+  </dialog>
+
+  <script>
+    function abrirDialogoDeCriacaoDeObjetivo() {
+      let modal = document.querySelector('dialog')
+
+      modal.showModal()
+    }
+  </script>
+
+  <script>
+    feather.replace()
+  </script>
+</body>
+
+</html>
