@@ -28,7 +28,7 @@
     <div class="sessao__cabecalho">
       <div class="sessao__cabecalho-container-primario">
         <p class="texto texto_cinza texto_espacado">OBJETIVO</p>
-        <h2 class="titulo">Economizar em gastos pessoais</h2>
+        <h2 class="titulo" name="nomeDoObjetivo">Economizar em gastos pessoais</h2>
       </div>
 
       <div class="sessao__cabecalho-container-secundario">
@@ -39,26 +39,14 @@
     </div>
 
     <div class="sessao__conteudo">
-      <div class="sessao__item">
-        <h2 class="titulo titulo_cinza titulo_pequeno">Gastar 30 menos</h2>
+      <div class="sessao__item" onclick="fazerCheckin()" title="Clique para fazer checkin">
+        <h2 class="titulo titulo_cinza titulo_pequeno" name="kr1Nome"></h2>
         <div class="regua">
-          <span class="regua__traco" style="width: 88%"></span>
+          <span class="regua__traco" name="reguakr1" style="width: 88%"></span>
           <div class="regua__valores">
-            <span>0%</span>
-            <span class="regua__valor-dinamico" style="left: 88%">88%</span>
-            <span>100%</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="sessao__item">
-        <h2 class="titulo titulo_cinza titulo_pequeno">Gastar 30 menos</h2>
-        <div class="regua">
-          <span class="regua__traco" style="width: 55.5%"></span>
-          <div class="regua__valores">
-            <span>0%</span>
-            <span class="regua__valor-dinamico" style="left: 55.5%">55.5%</span>
-            <span>100%</span>
+            <span name="valorInicialkr1">0%</span>
+            <span class="regua__valor-dinamico" name="valorkr1"></span>
+            <span name="valorFinalkr1">100%</span>
           </div>
         </div>
       </div>
@@ -138,7 +126,7 @@
     feather.replace()
   </script>
 
-  <script src="style.js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>

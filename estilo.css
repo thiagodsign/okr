@@ -73,6 +73,7 @@ hr.divisor {
   margin: 0 auto;
   border: 1px solid var(--cor-cinza-claro);
   border-radius: 8px;
+  margin-bottom: 16px;
 }
 
 @media screen and (max-width: 832px) {
@@ -88,10 +89,6 @@ hr.divisor {
   align-items: center;
   padding-bottom: 16px;
   border-bottom: 1px solid var(--cor-cinza-claro);
-}
-
-.sessao__conteudo {
-  padding: 16px;
 }
 
 .sessao__rodape {
@@ -132,6 +129,7 @@ hr.divisor {
   width: 100%;
   position: relative;
   margin-bottom: 8px;
+  margin-top: 16px;
 }
 
 .regua::after {
@@ -159,7 +157,7 @@ hr.divisor {
   justify-content: space-between;
   font-size: 14px;
   position: relative;
-  top: 8px;
+  top: -18px;
   color: var(--cor-cinza-claro)
 }
 
@@ -169,10 +167,17 @@ hr.divisor {
   font-weight: 600;
   color: var(--cor-cinza-escuro);
   margin-top: 4px;
+  top: 24px;
 }
 
 .sessao__item {
   margin-bottom: 24px;
+  cursor: pointer;
+  padding: 16px;
+}
+
+.sessao__item:hover {
+  background-color: var(--cor-primaria-clara);
 }
 
 .sessao__item:last-child {
