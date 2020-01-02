@@ -176,10 +176,6 @@ hr.divisor {
   padding: 16px;
 }
 
-.sessao__item:hover {
-  background-color: var(--cor-primaria-clara);
-}
-
 .sessao__item:last-child {
   margin-bottom: 0;
 }
