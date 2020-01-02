@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="estilo.css">
   <script src="https://unpkg.com/feather-icons"></script>
   <link href="https://fonts.googleapis.com/css?family=Montserrat:500,600,700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <title>OKRme</title>
 </head>
 
@@ -28,7 +29,7 @@
     <div class="sessao__cabecalho">
       <div class="sessao__cabecalho-container-primario">
         <p class="texto texto_cinza texto_espacado">OBJETIVO</p>
-        <h2 class="titulo" name="nomeDoObjetivo">Economizar em gastos pessoais</h2>
+        <h2 class="titulo" id="nomeDoObjetivo">{{ nomeDoObjetivo }}</h2>
       </div>
 
       <div class="sessao__cabecalho-container-secundario">
@@ -38,21 +39,25 @@
       </div>
     </div>
 
-    <div class="sessao__conteudo">
-      <div class="sessao__item" onclick="fazerCheckin()" title="Clique para fazer checkin">
-        <h2 class="titulo titulo_cinza titulo_pequeno" name="kr1Nome"></h2>
+    <div class="sessao__conteudo" id="example-1">
+      <div class="sessao__item" v-for="item in keyResults" v-on:click="fazerCheckin()" title="Clique para fazer checkin">
+        <h2 class="titulo titulo_cinza titulo_pequeno">{{ item.nome }}</h2>
         <div class="regua">
-          <span class="regua__traco" name="reguakr1" style="width: 88%"></span>
+          <span class="regua__traco"
+            v-bind:style="{width: (item.valorAtual - item.valorInicial) / (item.valorFinal - item.valorInicial) * 100  + '%'}"></span>
           <div class="regua__valores">
-            <span name="valorInicialkr1">0%</span>
-            <span class="regua__valor-dinamico" name="valorkr1"></span>
-            <span name="valorFinalkr1">100%</span>
+            <span name="valorInicialkr1">{{ item.valorInicial }}</span>
+            <span class="regua__valor-dinamico"
+              v-bind:style="{left: (item.valorAtual - item.valorInicial) / (item.valorFinal - item.valorInicial) * 100  + '%'}">
+              {{ ((item.valorAtual - item.valorInicial) / (item.valorFinal - item.valorInicial) * 100).toFixed(2)  + '%' }}
+            </span>
+            <span name="valorFinalkr1">{{ item.valorFinal }}</span>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="sessao__rodape">
+    <!-- <div class="sessao__rodape">
       <h3 class="titulo titulo_pequeno">Total do objetivo</h3>
       <div class="regua">
         <span class="regua__traco" style="width: 71.75%"></span>
@@ -62,7 +67,7 @@
           <span>100%</span>
         </div>
       </div>
-    </div>
+    </div> -->
   </section>
 
   <dialog class="dialogo">
@@ -125,8 +130,8 @@
 
     feather.replace()
   </script>
-
-  <script src="script.js"></script>
+  <script src="index.js">
+  </script>
 </body>
 
 </html>
