@@ -3,7 +3,7 @@
   --cor-primaria-clara: #ceeaf0;
   --cor-cinza-claro: #dbdbdb;
   --cor-cinza-escuro: #696969;
-  --cor-preta: 0,0,0;
+  --cor-preta: 0, 0, 0;
 }
 
 * {
@@ -27,7 +27,7 @@ hr.divisor {
   padding: 0 16px;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0px 0px 16px rgba(var(--cor-preta),.16);
+  box-shadow: 0px 0px 16px rgba(var(--cor-preta), 0.16);
 }
 
 .cabecalho__logo {
@@ -47,7 +47,7 @@ hr.divisor {
   border-radius: 50px;
   outline: 0;
   cursor: pointer;
-  transition: all ease .2s;
+  transition: all ease 0.2s;
 }
 
 .botao:hover {
@@ -66,6 +66,11 @@ hr.divisor {
 .botao_com-icone .feather {
   margin-right: 4px;
   height: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
 }
 
 .sessao {
@@ -98,7 +103,7 @@ hr.divisor {
 
 .texto {
   color: var(--cor-cinza-escuro);
-  font-size: 12px
+  font-size: 12px;
 }
 
 .texto_cinza {
@@ -125,6 +130,10 @@ hr.divisor {
   color: var(--cor-cinza-escuro);
 }
 
+.titulo_cor-primaria {
+  color: var(--cor-primaria);
+}
+
 .regua {
   width: 100%;
   position: relative;
@@ -133,7 +142,7 @@ hr.divisor {
 }
 
 .regua::after {
-  content: '';
+  content: "";
   height: 8px;
   width: 100%;
   display: block;
@@ -149,7 +158,7 @@ hr.divisor {
   z-index: 10;
   display: flex;
   height: 8px;
-  background: linear-gradient(101.67deg, #77D9CD -2.56%, #1A537C 150.55%);
+  background: linear-gradient(101.67deg, #77d9cd -2.56%, #1a537c 150.55%);
 }
 
 .regua__valores {
@@ -158,7 +167,7 @@ hr.divisor {
   font-size: 14px;
   position: relative;
   top: -18px;
-  color: var(--cor-cinza-claro)
+  color: var(--cor-cinza-claro);
 }
 
 .regua__valor-dinamico {
@@ -189,7 +198,7 @@ hr.divisor {
   top: 0px;
   left: auto;
   border: 0;
-  transition: all ease .3s;
+  transition: all ease 0.3s;
   justify-content: space-between;
 }
 
@@ -207,34 +216,34 @@ hr.divisor {
 .dialogo[open] {
   display: flex;
   right: -100px;
-  -webkit-animation: slide-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-  animation: slide-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  -webkit-animation: slide-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 @-webkit-keyframes slide-left {
   0% {
     -webkit-transform: translateX(0);
-      transform: translateX(0);
+    transform: translateX(0);
   }
   100% {
-  -webkit-transform: translateX(-100px);
-      transform: translateX(-100px);
+    -webkit-transform: translateX(-100px);
+    transform: translateX(-100px);
   }
 }
 
 @keyframes slide-left {
   0% {
-  -webkit-transform: translateX(0);
-      transform: translateX(0);
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
   }
   100% {
-  -webkit-transform: translateX(-100px);
-      transform: translateX(-100px);
+    -webkit-transform: translateX(-100px);
+    transform: translateX(-100px);
   }
 }
 
 .dialogo::backdrop {
-  background-color: rgba(0,0,0,.5);
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .formulario {
@@ -246,7 +255,9 @@ hr.divisor {
   margin-bottom: 4px;
 }
 
-.formulario input, .formulario textarea {
+.formulario input,
+.formulario textarea,
+.formulario select {
   border: 2px solid var(--cor-cinza-claro);
   border-radius: 8px;
   min-height: 32px;

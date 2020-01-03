@@ -26,9 +26,9 @@
   </nav>
 
   <div id="itemObjetivo">
-    <div v-for="quarter in quartersDoUsuario">
-      <h2 class="titulo">Quarter {{ quarter.length }}</h2>
-      <section class="sessao" v-for="objetivo in quarter.objetivos">
+    <div class="container" v-for="quarter in quartersDoUsuario">
+      <h2 class="titulo titulo_cor-primaria">{{ quarter }}</h2>
+      <!-- <section class="sessao" v-for="objetivo in quarter.objetivos">
         <div class="sessao__cabecalho">
           <div class="sessao__cabecalho-container-primario">
             <p class="texto texto_cinza texto_espacado">OBJETIVO</p>
@@ -41,9 +41,9 @@
               <i data-feather="more-vertical"></i>
             </button>
           </div>
-        </div>
+        </div> -->
 
-        <div class="sessao__conteudo">
+        <!-- <div class="sessao__conteudo">
           <div class="sessao__item" v-for="item in objetivo.keyResults" v-bind:id="objetivo.keyResults.indexOf(item)"
             onclick="fazerCheckin(this)" title=" Clique para fazer checkin">
             <h2 class="titulo titulo_cinza titulo_pequeno">{{ item.nome }}</h2>
@@ -60,7 +60,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
 
         <!-- <div class="sessao__rodape">
           <h3 class="titulo titulo_pequeno">Total do objetivo</h3>
@@ -73,8 +73,7 @@
             </div>
           </div>
         </div> -->
-
-      </section>
+      <!-- </section> -->
     </div>
   </div>
 
@@ -82,35 +81,18 @@
     <div class="dialogo__corpo">
       <form class="formulario">
         <label for="quarter">Quarter</label>
-        <input type="text" id="quarter">
+        <select name="selecaoQuarter" id="quarter">
+          <option value="Q1 - 2019">Quarter 1 - 2019</option>
+          <option value="Q2 - 2019">Quarter 2 - 2019</option>
+          <option value="Q3 - 2019">Quarter 3 - 2019</option>
+          <option value="Q4 - 2019">Quarter 4 - 2019</option>
+        </select>
 
         <label for="nomeDoObjetivo">Nome do objetivo</label>
         <input type="text" id="nomeDoObjetivo">
 
         <label for="descricaoDoObjetivo">Descrição</label>
         <textarea rows="3" id="descricaoDoObjetivo"></textarea>
-
-        <hr class="divisor">
-
-        <label for="key1">Key Result 1</label>
-        <input type="text" id="key1">
-
-        <div class="container-flexivel">
-          <div>
-            <label for="valorInicial">Valor inicial</label>
-            <input type="number" id="valorInicial">
-          </div>
-
-          <div>
-            <label for="valorFinal">Valor final</label>
-            <input type="number" id="valorFinal">
-          </div>
-        </div>
-
-        <button type="button" class="botao botao_branco botao_com-icone">
-          <i data-feather="plus-circle"></i>
-          Adicionar novo Key Result
-        </button>
       </form>
     </div>
 
