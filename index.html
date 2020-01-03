@@ -26,68 +26,74 @@
   </nav>
 
   <div id="itemObjetivo">
-    <section class="sessao" v-for="objetivo in objetivosDoUsuario">
-      <div class="sessao__cabecalho">
-        <div class="sessao__cabecalho-container-primario">
-          <p class="texto texto_cinza texto_espacado">OBJETIVO</p>
-          <h2 class="titulo">{{ objetivo.nome }}</h2>
-          <p class="texto texto_cinza">{{objetivo.descricao}}</p>
+    <div v-for="quarter in quartersDoUsuario">
+      <h2 class="titulo">Quarter {{ quarter.length }}</h2>
+      <section class="sessao" v-for="objetivo in quarter.objetivos">
+        <div class="sessao__cabecalho">
+          <div class="sessao__cabecalho-container-primario">
+            <p class="texto texto_cinza texto_espacado">OBJETIVO</p>
+            <h2 class="titulo">{{ objetivo.nome }}</h2>
+            <p class="texto texto_cinza">{{objetivo.descricao}}</p>
+          </div>
+
+          <div class="sessao__cabecalho-container-secundario">
+            <button type="button" class="botao botao_branco">
+              <i data-feather="more-vertical"></i>
+            </button>
+          </div>
         </div>
 
-        <div class="sessao__cabecalho-container-secundario">
-          <button type="button" class="botao botao_branco">
-            <i data-feather="more-vertical"></i>
-          </button>
-        </div>
-      </div>
-
-      <div class="sessao__conteudo">
-        <div class="sessao__item" v-for="item in objetivo.keyResults" v-bind:id="objetivo.keyResults.indexOf(item)"
-          onclick="fazerCheckin(this)" title=" Clique para fazer checkin">
-          <h2 class="titulo titulo_cinza titulo_pequeno">{{ item.nome }}</h2>
-          <div class="regua">
-            <span class="regua__traco"
-              v-bind:style="{width: (item.valorAtual - item.valorInicial) / (item.valorFinal - item.valorInicial) * 100  + '%'}"></span>
-            <div class="regua__valores">
-              <span name="valorInicialkr1">{{ item.valorInicial }}</span>
-              <span class="regua__valor-dinamico"
-                v-bind:style="{left: (item.valorAtual - item.valorInicial) / (item.valorFinal - item.valorInicial) * 100  + '%'}">
-                {{ ((item.valorAtual - item.valorInicial) / (item.valorFinal - item.valorInicial) * 100).toFixed(2)  + '%' }}
-              </span>
-              <span name="valorFinalkr1">{{ item.valorFinal }}</span>
+        <div class="sessao__conteudo">
+          <div class="sessao__item" v-for="item in objetivo.keyResults" v-bind:id="objetivo.keyResults.indexOf(item)"
+            onclick="fazerCheckin(this)" title=" Clique para fazer checkin">
+            <h2 class="titulo titulo_cinza titulo_pequeno">{{ item.nome }}</h2>
+            <div class="regua">
+              <span class="regua__traco"
+                v-bind:style="{width: (item.valorAtual - item.valorInicial) / (item.valorFinal - item.valorInicial) * 100  + '%'}"></span>
+              <div class="regua__valores">
+                <span name="valorInicialkr1">{{ item.valorInicial }}</span>
+                <span class="regua__valor-dinamico"
+                  v-bind:style="{left: (item.valorAtual - item.valorInicial) / (item.valorFinal - item.valorInicial) * 100  + '%'}">
+                  {{ ((item.valorAtual - item.valorInicial) / (item.valorFinal - item.valorInicial) * 100).toFixed(2)  + '%' }}
+                </span>
+                <span name="valorFinalkr1">{{ item.valorFinal }}</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- <div class="sessao__rodape">
-        <h3 class="titulo titulo_pequeno">Total do objetivo</h3>
-        <div class="regua">
-          <span class="regua__traco" style="width: 71.75%"></span>
-          <div class="regua__valores">
-            <span>0%</span>
-            <span class="regua__valor-dinamico" style="left: 71.75%">71.75%</span>
-            <span>100%</span>
+        <!-- <div class="sessao__rodape">
+          <h3 class="titulo titulo_pequeno">Total do objetivo</h3>
+          <div class="regua">
+            <span class="regua__traco" style="width: 71.75%"></span>
+            <div class="regua__valores">
+              <span>0%</span>
+              <span class="regua__valor-dinamico" style="left: 71.75%">71.75%</span>
+              <span>100%</span>
+            </div>
           </div>
-        </div>
-      </div> -->
+        </div> -->
 
-    </section>
+      </section>
+    </div>
   </div>
 
   <dialog class="dialogo">
     <div class="dialogo__corpo">
       <form class="formulario">
+        <label for="quarter">Quarter</label>
+        <input type="text" id="quarter">
+
         <label for="nomeDoObjetivo">Nome do objetivo</label>
-        <input type="text" id="nomeDoObjetivo" placeholder="Insira aqui o nome do seu objetivo">
+        <input type="text" id="nomeDoObjetivo">
 
         <label for="descricaoDoObjetivo">Descrição</label>
-        <textarea rows="3" id="descricaoDoObjetivo" placeholder="Insira aqui o nome do seu objetivo"></textarea>
+        <textarea rows="3" id="descricaoDoObjetivo"></textarea>
 
         <hr class="divisor">
 
         <label for="key1">Key Result 1</label>
-        <input type="text" id="key1" placeholder="Insira aqui o nome do seu objetivo">
+        <input type="text" id="key1">
 
         <div class="container-flexivel">
           <div>
