@@ -1,4 +1,4 @@
-let okr = [{
+export const okr = [{
   quarter: [{
     id: 1,
     nome: 'Quarter 01',
@@ -35,11 +35,3 @@ let okr = [{
     }]
   }]
 }]
-
-
-new Vue({
-  el: '#itemObjetivo',
-  data: {
-    okrs: okr
-  }
-})
