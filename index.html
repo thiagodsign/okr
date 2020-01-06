@@ -28,7 +28,7 @@
   <div id="itemObjetivo">
     <div class="container" v-for="okr in okrs">
       <div v-for="quarter in okr.quarter">
-        <h2 class="titulo titulo_cor-primaria">{{ quarter.nome }}</h2>
+        <h2 class="titulo">{{ quarter.nome }}</h2>
         <section class="sessao" v-for="objetivo in quarter.objetivos">
           <div class="sessao__cabecalho">
             <div class="sessao__cabecalho-container-primario">
@@ -38,7 +38,7 @@
             </div>
 
             <div class="sessao__cabecalho-container-secundario">
-              <button type="button" class="botao botao_branco">
+              <button type="button" class="botao botao_sem-fundo">
                 <i data-feather="more-vertical"></i>
               </button>
             </div>

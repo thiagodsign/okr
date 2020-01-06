@@ -32,6 +32,16 @@ export const okr = [{
         valorFinal: 60,
         valorAtual: 55
       }]
+    },
+    {
+      nome: 'Objetivo Nome',
+      descricao: 'Objetivo Descrição',
+      krs: [{
+        nome: 'Tornar 4x',
+        valorInicial: 40,
+        valorFinal: 60,
+        valorAtual: 55
+      }]
     }]
   }]
 }]
