@@ -1,7 +1,7 @@
 export const okr = [{
   quarter: [{
     id: 1,
-    nome: 'Quarter 01',
+    nome: 'Quarter 01/2019',
     objetivos: [{
       nome: 'Objetivo Nome',
       descricao: 'Objetivo Descrição',
@@ -22,7 +22,7 @@ export const okr = [{
 
   {
     id: 2,
-    nome: 'Quarter 02',
+    nome: 'Quarter 02/2019',
     objetivos: [{
       nome: 'Objetivo Nome',
       descricao: 'Objetivo Descrição',

@@ -7,16 +7,12 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="estilo.css">
   <script src="https://unpkg.com/feather-icons"></script>
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:500,600,700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:500,600,700&display=swap" rel="stylesheet">
   <title>OKRme</title>
 </head>
 
 <body>
-  <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-database.js"></script>
-  <script src="configuracao-firebase.js"></script>
-
   <nav class="cabecalho">
     <img src="ativos/logo.svg" alt="Logo OKR" class="cabecalho__logo">
     <button type="button" class="botao botao_com-icone" onclick="abrirDialogoDeCriacaoDeObjetivo()">
@@ -34,7 +30,7 @@
             <div class="sessao__cabecalho-container-primario">
               <p class="texto texto_cinza texto_espacado">OBJETIVO</p>
               <h2 class="titulo">{{ objetivo.nome }}</h2>
-              <p class="texto texto_cinza">{{objetivo.descricao}}</p>
+              <p class="texto texto_cinza">{{ objetivo.descricao }}</p>
             </div>
 
             <div class="sessao__cabecalho-container-secundario">
@@ -47,19 +43,25 @@
           <div class="sessao__conteudo">
             <div class="sessao__item" v-for="item in objetivo.krs" v-bind:id="objetivo.krs.indexOf(item)"
               onclick="fazerCheckin(this)" title=" Clique para fazer checkin">
-              <h2 class="titulo titulo_cinza titulo_pequeno">{{ item.nome }}</h2>
-              <div class="regua">
-                <span class="regua__traco"
-                  v-bind:style="{width: (item.valorAtual - item.valorInicial) / (item.valorFinal - item.valorInicial) * 100  + '%'}"></span>
-                <div class="regua__valores">
-                  <span name="valorInicialkr1">{{ item.valorInicial }}</span>
-                  <span class="regua__valor-dinamico"
-                    v-bind:style="{left: (item.valorAtual - item.valorInicial) / (item.valorFinal - item.valorInicial) * 100  + '%'}">
-                    {{ ((item.valorAtual - item.valorInicial) / (item.valorFinal - item.valorInicial) * 100).toFixed(2)  + '%' }}
-                  </span>
-                  <span name="valorFinalkr1">{{ item.valorFinal }}</span>
+              <div class="sessao__conteudo-primario-do-item">
+                <h2 class="titulo titulo_cinza titulo_pequeno">{{ item.nome }}</h2>
+                <div class="regua">
+                  <span class="regua__traco"
+                    v-bind:style="{width: (item.valorAtual - item.valorInicial) / (item.valorFinal - item.valorInicial) * 100  + '%'}"></span>
+                  <div class="regua__valores">
+                    <span name="valorInicialkr1">{{ item.valorInicial }}</span>
+                    <span class="regua__valor-dinamico"
+                      v-bind:style="{left: (item.valorAtual - item.valorInicial) / (item.valorFinal - item.valorInicial) * 100  + '%'}">
+                      {{ ((item.valorAtual - item.valorInicial) / (item.valorFinal - item.valorInicial) * 100).toFixed(2)  + '%' }}
+                    </span>
+                    <span name="valorFinalkr1">{{ item.valorFinal }}</span>
+                  </div>
                 </div>
               </div>
+              <button class="botao">
+                <i data-feather="check"></i>
+                Checkin
+              </button>
             </div>
           </div>
 
@@ -125,6 +127,7 @@
 
     feather.replace()
   </script>
+
   <script type="module" src="index.js"></script>
 </body>
 

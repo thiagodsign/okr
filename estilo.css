@@ -1,9 +1,11 @@
 :root {
   --cor-primaria: #3a8199;
   --cor-primaria-clara: #ceeaf0;
-  --cor-cinza-claro: #dbdbdb;
-  --cor-cinza-escuro: #282828;
-  --cor-cinza: #373737;
+  --cor-cinza-10: #dbdbdb;
+  --cor-cinza-40: #a8a8a8;
+  --cor-cinza-60: #3f3f3f;
+  --cor-cinza-70: #333333;
+  --cor-cinza-80: #292929;
   --cor-preta: 0, 0, 0;
 }
 
@@ -15,14 +17,14 @@
 }
 
 body {
-  background-color: var(--cor-cinza);
+  background-color: var(--cor-cinza-70);
 }
 
 hr.divisor {
   border: 0;
   margin-bottom: 16px;
   height: 2px;
-  background-color: var(--cor-cinza-claro);
+  background-color: var(--cor-cinza-10);
 }
 
 .cabecalho {
@@ -36,7 +38,7 @@ hr.divisor {
   align-items: center;
   justify-content: space-between;
   box-shadow: 0px 0px 16px rgba(var(--cor-preta), 0.3);
-  background: var(--cor-cinza-escuro);
+  background: var(--cor-cinza-80);
 }
 
 .cabecalho__logo {
@@ -60,7 +62,7 @@ hr.divisor {
 }
 
 .botao:hover {
-  box-shadow: 0 0 8px 8px rgba(204, 233, 240, 0.5);
+  box-shadow: 0 0 8px 8px rgba(0, 0, 0, 0.2);
 }
 
 .botao:active {
@@ -85,10 +87,10 @@ hr.divisor {
 .sessao {
   max-width: 800px;
   margin: 0 auto;
-  border: 1px solid rgb(116, 116, 116);
+  border: 1px solid var(--cor-cinza-60);
   border-radius: 8px;
   margin-bottom: 16px;
-  background-color: var(--cor-cinza-escuro);
+  background-color: var(--cor-cinza-80);
 }
 
 @media screen and (max-width: 832px) {
@@ -102,21 +104,21 @@ hr.divisor {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid rgb(126, 126, 126);
+  border-bottom: 1px solid var(--cor-cinza-60);
 }
 
 .sessao__rodape {
   padding: 16px;
-  border-top: 1px solid var(--cor-cinza-claro);
+  border-top: 1px solid var(--cor-cinza-60);
 }
 
 .texto {
-  color: var(--cor-cinza-escuro);
+  color: var(--cor-cinza-80);
   font-size: 12px;
 }
 
 .texto_cinza {
-  color: var(--cor-cinza-claro);
+  color: var(--cor-cinza-10);
 }
 
 .texto_espacado {
@@ -127,7 +129,7 @@ hr.divisor {
 .titulo {
   font-size: 24px;
   margin-bottom: 8px;
-  color: var(--cor-cinza-claro);
+  color: var(--cor-cinza-10);
   font-weight: 600;
 }
 
@@ -137,7 +139,7 @@ hr.divisor {
 }
 
 .titulo_cinza {
-  color: var(--cor-cinza-claro);
+  color: var(--cor-cinza-10);
 }
 
 .titulo_cor-primaria {
@@ -156,7 +158,7 @@ hr.divisor {
   height: 8px;
   width: 100%;
   display: block;
-  background-color: var(--cor-cinza-claro);
+  background-color: var(--cor-cinza-10);
   position: absolute;
   top: 0;
 }
@@ -177,14 +179,14 @@ hr.divisor {
   font-size: 14px;
   position: relative;
   top: -18px;
-  color: var(--cor-cinza-claro);
+  color: var(--cor-cinza-10);
 }
 
 .regua__valor-dinamico {
   position: absolute;
   font-size: 18px;
   font-weight: 600;
-  color: var(--cor-cinza-claro);
+  color: var(--cor-cinza-10);
   margin-top: 4px;
   top: 24px;
 }
@@ -192,10 +194,18 @@ hr.divisor {
 .sessao__item {
   cursor: pointer;
   padding: 16px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--cor-cinza-60);
 }
 
 .sessao__item:last-child {
   margin-bottom: 0;
+}
+
+.sessao__conteudo-primario-do-item {
+  flex-grow: 1;
+  margin-right: 16px;
 }
 
 .dialogo {
@@ -268,7 +278,7 @@ hr.divisor {
 .formulario input,
 .formulario textarea,
 .formulario select {
-  border: 2px solid var(--cor-cinza-claro);
+  border: 2px solid var(--cor-cinza-10);
   border-radius: 8px;
   min-height: 32px;
   padding: 8px;
