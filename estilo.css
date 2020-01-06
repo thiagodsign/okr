@@ -74,14 +74,27 @@ hr.divisor {
   background-color: transparent;
 }
 
+.botao_pequeno {
+  font-size: 14px;
+}
+
 .botao_com-icone .feather {
   margin-right: 4px;
   height: 20px;
 }
 
+.botao_pequeno .feather {
+  margin-right: 2px;
+  height: 16px;
+}
+
 .container {
   max-width: 800px;
   margin: auto;
+}
+
+.container_com-margem {
+  margin-bottom: 32px;
 }
 
 .sessao {
@@ -94,7 +107,7 @@ hr.divisor {
 }
 
 @media screen and (max-width: 832px) {
-  .sessao {
+  .container {
     margin: 16px;
   }
 }
@@ -197,6 +210,10 @@ hr.divisor {
   display: flex;
   align-items: center;
   border-bottom: 1px solid var(--cor-cinza-60);
+}
+.sessao__item:hover,
+.sessao__item:focus {
+  background-color: var(--cor-cinza-70);
 }
 
 .sessao__item:last-child {

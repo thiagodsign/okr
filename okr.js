@@ -1,4 +1,4 @@
-export const okr = [{
+export const okr = {
   quarter: [{
     id: 1,
     nome: 'Quarter 01/2019',
@@ -44,4 +44,4 @@ export const okr = [{
       }]
     }]
   }]
-}]
+}

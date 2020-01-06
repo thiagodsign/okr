@@ -22,62 +22,60 @@
   </nav>
 
   <div id="itemObjetivo">
-    <div class="container" v-for="okr in okrs">
-      <div v-for="quarter in okr.quarter">
-        <h2 class="titulo">{{ quarter.nome }}</h2>
-        <section class="sessao" v-for="objetivo in quarter.objetivos">
-          <div class="sessao__cabecalho">
-            <div class="sessao__cabecalho-container-primario">
-              <p class="texto texto_cinza texto_espacado">OBJETIVO</p>
-              <h2 class="titulo">{{ objetivo.nome }}</h2>
-              <p class="texto texto_cinza">{{ objetivo.descricao }}</p>
-            </div>
-
-            <div class="sessao__cabecalho-container-secundario">
-              <button type="button" class="botao botao_sem-fundo">
-                <i data-feather="more-vertical"></i>
-              </button>
-            </div>
+    <div class="container container_com-margem" v-for="quarter in okrs.quarter">
+      <h2 class="titulo">{{ quarter.nome }}</h2>
+      <section class="sessao" v-for="objetivo in quarter.objetivos">
+        <div class="sessao__cabecalho">
+          <div class="sessao__cabecalho-container-primario">
+            <p class="texto texto_cinza texto_espacado">OBJETIVO</p>
+            <h2 class="titulo">{{ objetivo.nome }}</h2>
+            <p class="texto texto_cinza">{{ objetivo.descricao }}</p>
           </div>
 
-          <div class="sessao__conteudo">
-            <div class="sessao__item" v-for="item in objetivo.krs" v-bind:id="objetivo.krs.indexOf(item)"
-              onclick="fazerCheckin(this)" title=" Clique para fazer checkin">
-              <div class="sessao__conteudo-primario-do-item">
-                <h2 class="titulo titulo_cinza titulo_pequeno">{{ item.nome }}</h2>
-                <div class="regua">
-                  <span class="regua__traco"
-                    v-bind:style="{width: (item.valorAtual - item.valorInicial) / (item.valorFinal - item.valorInicial) * 100  + '%'}"></span>
-                  <div class="regua__valores">
-                    <span name="valorInicialkr1">{{ item.valorInicial }}</span>
-                    <span class="regua__valor-dinamico"
-                      v-bind:style="{left: (item.valorAtual - item.valorInicial) / (item.valorFinal - item.valorInicial) * 100  + '%'}">
-                      {{ ((item.valorAtual - item.valorInicial) / (item.valorFinal - item.valorInicial) * 100).toFixed(2)  + '%' }}
-                    </span>
-                    <span name="valorFinalkr1">{{ item.valorFinal }}</span>
-                  </div>
+          <div class="sessao__cabecalho-container-secundario">
+            <button type="button" class="botao botao_sem-fundo">
+              <i data-feather="more-vertical"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="sessao__conteudo">
+          <div class="sessao__item" v-for="item in objetivo.krs" v-bind:id="objetivo.krs.indexOf(item)"
+            onclick="fazerCheckin(this)" title=" Clique para fazer checkin">
+            <div class="sessao__conteudo-primario-do-item">
+              <h2 class="titulo titulo_cinza titulo_pequeno">{{ item.nome }}</h2>
+              <div class="regua">
+                <span class="regua__traco"
+                  v-bind:style="{width: (item.valorAtual - item.valorInicial) / (item.valorFinal - item.valorInicial) * 100  + '%'}"></span>
+                <div class="regua__valores">
+                  <span name="valorInicialkr1">{{ item.valorInicial }}</span>
+                  <span class="regua__valor-dinamico"
+                    v-bind:style="{left: (item.valorAtual - item.valorInicial) / (item.valorFinal - item.valorInicial) * 100  + '%'}">
+                    {{ ((item.valorAtual - item.valorInicial) / (item.valorFinal - item.valorInicial) * 100).toFixed(2)  + '%' }}
+                  </span>
+                  <span name="valorFinalkr1">{{ item.valorFinal }}</span>
                 </div>
               </div>
-              <button class="botao">
-                <i data-feather="check"></i>
-                Checkin
-              </button>
             </div>
+            <button class="botao botao_com-icone botao_pequeno">
+              <i data-feather="map-pin"></i>
+              Checkin
+            </button>
           </div>
+        </div>
 
-          <div class="sessao__rodape">
-            <h3 class="titulo titulo_pequeno">Total do objetivo</h3>
-            <div class="regua">
-              <span class="regua__traco" style="width: 71.75%"></span>
-              <div class="regua__valores">
-                <span>0%</span>
-                <span class="regua__valor-dinamico" style="left: 71.75%">71.75%</span>
-                <span>100%</span>
-              </div>
+        <div class="sessao__rodape">
+          <h3 class="titulo titulo_pequeno">Total do objetivo</h3>
+          <div class="regua">
+            <span class="regua__traco" style="width: 71.75%"></span>
+            <div class="regua__valores">
+              <span>0%</span>
+              <span class="regua__valor-dinamico" style="left: 71.75%">71.75%</span>
+              <span>100%</span>
             </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </div>
   </div>
 
