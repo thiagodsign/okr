@@ -137,6 +137,7 @@ hr.divisor {
 .texto_espacado {
   letter-spacing: 2px;
   color: #858585;
+  margin-bottom: 4px;
 }
 
 .titulo {
