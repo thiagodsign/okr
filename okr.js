@@ -9,13 +9,22 @@ export const okr = {
         nome: 'Tornar 4x',
         valorInicial: 40,
         valorFinal: 60,
-        valorAtual: 55
+        valorAtual: 55,
+        tarefa: 0
+      },
+      {
+        nome: 'Tornar 4x',
+        valorInicial: 40,
+        valorFinal: 80,
+        valorAtual: 60,
+        tarefa: 0
       },
       {
         nome: 'Tornar 4x',
         valorInicial: 40,
         valorFinal: 60,
-        valorAtual: 55
+        valorAtual: 55,
+        tarefa: 0
       }]
     }]
   },

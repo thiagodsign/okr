@@ -81,11 +81,13 @@ hr.divisor {
 .botao_com-icone .feather {
   margin-right: 4px;
   height: 20px;
+  width: 20px;
 }
 
 .botao_pequeno .feather {
   margin-right: 2px;
   height: 16px;
+  width: 16px;
 }
 
 .container {
