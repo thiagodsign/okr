@@ -22,9 +22,9 @@
   </nav>
 
   <div id="itemObjetivo">
-    <div class="container container_com-margem" v-for="quarter in okrs.quarter">
+    <div class="container container_com-margem" v-for="quarter in quarters">
       <h2 class="titulo">{{ quarter.nome }}</h2>
-      <section class="sessao" v-for="objetivo in quarter.objetivos">
+      <section class="sessao" v-for="objetivo in objetivosDoQuarter(quarter.id)">
         <div class="sessao__cabecalho">
           <div class="sessao__cabecalho-container-primario">
             <p class="texto texto_cinza texto_espacado">OBJETIVO</p>
@@ -40,7 +40,7 @@
         </div>
 
         <div class="sessao__conteudo">
-          <div class="sessao__item" v-for="item in objetivo.krs" v-bind:id="objetivo.krs.indexOf(item)"
+          <div class="sessao__item" v-for="item in krsDoObjetivo(objetivo.id)"
             onclick="fazerCheckin(this)" title=" Clique para fazer checkin">
             <div class="sessao__conteudo-primario-do-item">
               <h2 class="titulo titulo_cinza titulo_pequeno">{{ item.nome }}</h2>

@@ -1,8 +1,10 @@
-import { okr } from "./okr.js"
+import { quarters, objetivosDoQuarter, krsDoObjetivo } from "./okr.js"
 
 new Vue({
   el: '#itemObjetivo',
   data: {
-    okrs: okr
+    quarters,
+    objetivosDoQuarter,
+    krsDoObjetivo
   }
 })
