@@ -25,6 +25,12 @@ export const objetivos = [
     nome: 'Objetivo Nome',
     descricao: 'Objetivo Descrição',
     idDoQuarter: 1
+  },
+  {
+    id: 3,
+    nome: 'Objetivo três',
+    descricao: 'Objetivo Descrição',
+    idDoQuarter: 1
   }
 ]
 
