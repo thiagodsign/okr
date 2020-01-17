@@ -13,6 +13,22 @@
 </head>
 
 <body>
+
+  <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-database.js"></script>
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyCV_Utr9QyVsGG63mD8rZdYXy0xZdxVu4Q",
+      authDomain: "thiago-dsign.firebaseapp.com",
+      databaseURL: "https://thiago-dsign.firebaseio.com",
+      projectId: "thiago-dsign",
+      storageBucket: "thiago-dsign.appspot.com",
+      messagingSenderId: "17855283546",
+      appId: "1:17855283546:web:55607829a31d26ced33363"
+    };
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
   <nav class="cabecalho">
     <img src="ativos/logo.svg" alt="Logo OKR" class="cabecalho__logo">
     <button type="button" class="botao botao_com-icone" onclick="abrirDialogoDeCriacaoDeObjetivo()">
@@ -22,7 +38,8 @@
   </nav>
 
   <div id="itemObjetivo">
-    <div class="container container_com-margem" v-for="quarter in quarters">
+
+    <div class="container container_com-margem" v-for="quarter in okr.quarters">
       <h2 class="titulo">{{ quarter.nome }}</h2>
       <section class="sessao" v-for="objetivo in objetivosDoQuarter(quarter.id)">
         <div class="sessao__cabecalho">
@@ -127,6 +144,7 @@
   </script>
 
   <script type="module" src="index.js"></script>
+  <script src="firebase.js"></script>
 </body>
 
 </html>
