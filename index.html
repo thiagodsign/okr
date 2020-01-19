@@ -96,7 +96,7 @@
     </div>
   </div>
 
-  <dialog class="dialogo">
+  <div class="dialogo">
     <div class="dialogo__corpo">
       <form class="formulario">
         <label for="quarter">Quarter</label>
@@ -127,17 +127,26 @@
         Salvar objetivo
       </button>
     </div>
-  </dialog>
+  </div>>
 
   <script>
-    let modal = document.querySelector('dialog')
+    let modal = document.querySelector('.dialogo')
 
     function abrirDialogoDeCriacaoDeObjetivo() {
-      modal.showModal()
+      modal.classList.add('dialogo_aberto')
+      fecharDialogoComEsc()
     }
 
     function fecharDialogo() {
-      modal.close()
+      modal.classList.remove('dialogo_aberto')
+    }
+
+    function fecharDialogoComEsc() {
+      document.onkeydown = function (e) {
+        if (e.which == 27) {
+          fecharDialogo()
+        }
+      }
     }
 
     feather.replace()
