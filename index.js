@@ -9,7 +9,7 @@ function abrirDialogoDeKr(kr) {
   abrirDialogoDeCriacaoDeObjetivo('dialogoKr')
   let objetivoDaKr = okr.objetivos.filter(objetivo => objetivo.id === kr.idDoObjetivo)[0]
 
-  document.querySelector('[name=tituloDoObjetivo]').innerText = objetivoDaKr.id
+  document.querySelector('[name=tituloDoObjetivo]').innerText = objetivoDaKr.nome
   document.querySelector('#inputKr').value = kr.nome
   document.querySelector('#valorInicial').value = kr.valorInicial
   document.querySelector('#valorFinal').value = kr.valorFinal
