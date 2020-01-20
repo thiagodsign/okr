@@ -18,26 +18,26 @@ function criarQuarter() {
 }
 
 function criarObjetivo() {
-  firebase.database().ref('okr/objetivos/').set([
-    {
-      id: 1,
-      nome: 'Objetivo Nome',
-      descricao: 'Objetivo Descrição',
-      idDoQuarter: 2
-    },
-    {
-      id: 2,
-      nome: 'Objetivo Nome',
-      descricao: 'Objetivo Descrição',
-      idDoQuarter: 1
-    },
-    {
-      id: 3,
-      nome: 'Objetivo três',
-      descricao: 'Objetivo Descrição',
-      idDoQuarter: 1
-    }
-  ])
+  let idDoObjetivo;
+
+  if (okr.objetivos && okr.objetivos.length) {
+    idDoObjetivo = okr.objetivos.length
+  } else {
+    idDoObjetivo = 0
+  }
+
+  let nome = document.getElementById('nomeDoObjetivo').value
+  let idQuarter = document.getElementById('selecaoQuarter').value
+  let descricao = document.getElementById('descricaoDoObjetivo').value
+
+  firebase.database().ref('okr/objetivos/' + idDoObjetivo + '/').update({
+    id: idDoObjetivo + 1,
+    nome: nome,
+    descricao: descricao,
+    idDoQuarter: Number(idQuarter)
+  }).then(() => {
+    window.location.reload()
+  })
 }
 
 function criarKR() {

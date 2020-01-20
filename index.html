@@ -92,6 +92,10 @@
               </div>
             </div>
           </div>
+          <div class="u-alinhar-ao-centro">
+            <h3 class="titulo titulo_pequeno">Crie sua primeira KR</h3>
+            <button class="botao" v-on:click="novaKr(objetivo.id)">Criar KR</button>
+          </div>
         </div>
       </section>
     </div>
@@ -99,13 +103,10 @@
 
   <div class="dialogo" id="dialogoObjetivo">
     <div class="dialogo__corpo">
-      <form class="formulario">
+      <form class="formulario" id="formularioObjetivo" onsubmit="criarObjetivo()">
         <label for="quarter">Quarter</label>
-        <select name="selecaoQuarter" id="quarter">
-          <option value="Q1 - 2019">Quarter 1 - 2019</option>
-          <option value="Q2 - 2019">Quarter 2 - 2019</option>
-          <option value="Q3 - 2019">Quarter 3 - 2019</option>
-          <option value="Q4 - 2019">Quarter 4 - 2019</option>
+        <select name="selecaoQuarter" id="selecaoQuarter">
+          <option value="1">Quarter 1 - 2019</option>
         </select>
 
         <label for="nomeDoObjetivo">Nome do objetivo</label>
@@ -123,7 +124,7 @@
         Cancelar
       </button>
 
-      <button type="button" class="botao botao_com-icone" onclick="criarObjetivo()">
+      <button type="submit" form="formularioObjetivo" class="botao botao_com-icone">
         <i data-feather="save"></i>
         Salvar objetivo
       </button>
@@ -162,10 +163,6 @@
       </button>
     </div>
   </div>
-
-  <script>
-
-  </script>
 
   <script src="index.js"></script>
   <script src="firebase.js"></script>

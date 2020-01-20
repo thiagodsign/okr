@@ -2,6 +2,7 @@
   --cor-primaria: #3a8199;
   --cor-primaria-clara: #ceeaf0;
   --cor-cinza-10: #dbdbdb;
+  --cor-cinza-20: #c2c2c2;
   --cor-cinza-40: #a8a8a8;
   --cor-cinza-60: #3f3f3f;
   --cor-cinza-70: #333333;
@@ -53,7 +54,7 @@ hr.divisor {
   align-items: center;
   padding: 0 12px;
   height: 32px;
-  border: 0;
+  border: 2px solid transparent;
   background-color: var(--cor-primaria-clara);
   border-radius: 50px;
   outline: 0;
@@ -61,8 +62,8 @@ hr.divisor {
   transition: all ease 0.2s;
 }
 
-.botao:hover {
-  box-shadow: 0 0 8px 8px rgba(0, 0, 0, 0.2);
+.botao:hover, .botao:focus {
+ border-color: var(--cor-primaria);
 }
 
 .botao:active {
@@ -145,7 +146,7 @@ hr.divisor {
 .titulo {
   font-size: 24px;
   margin-bottom: 8px;
-  color: var(--cor-cinza-10);
+  color: var(--cor-cinza-20);
   font-weight: 600;
 }
 
@@ -155,7 +156,7 @@ hr.divisor {
 }
 
 .titulo_cinza {
-  color: var(--cor-cinza-10);
+  color: var(--cor-cinza-20);
 }
 
 .titulo_cor-primaria {
@@ -326,4 +327,8 @@ hr.divisor {
 
 .container-flexivel div:last-child {
   margin-left: 4px;
+}
+
+.u-alinhar-ao-centro {
+  text-align: center;
 }

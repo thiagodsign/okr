@@ -1,9 +1,13 @@
 let okr = {}
 
-firebase.database().ref('okr/').once('value').then((snapshot) => {
-  okr = (snapshot.val() && snapshot.val())
-  iniciarComDados()
-})
+obterDados();
+
+function obterDados() {
+  firebase.database().ref('okr/').once('value').then((snapshot) => {
+    okr = (snapshot.val() && snapshot.val())
+    iniciarComDados()
+  })
+}
 
 function abrirDialogoDeKr(kr) {
   abrirDialogoDeCriacaoDeObjetivo('dialogoKr')
@@ -16,6 +20,12 @@ function abrirDialogoDeKr(kr) {
   document.querySelector('#valorAtual').value = kr.valorAtual
 }
 
+function dialogoNovaKr(idDoObjetivo) {
+  abrirDialogoDeCriacaoDeObjetivo('dialogoKr')
+  let objetivoDaKr = okr.objetivos.filter(objetivo => objetivo.id === idDoObjetivo)[0]
+
+  document.querySelector('[name=tituloDoObjetivo]').innerText = objetivoDaKr.nome
+}
 
 function abrirDialogoDeCriacaoDeObjetivo(idDoDialogo) {
   let modal = document.getElementById(idDoDialogo)
@@ -46,7 +56,8 @@ function iniciarComDados() {
       okr,
       objetivosDoQuarter: (idDoQuarter) => okr.objetivos.filter(objetivo => objetivo.idDoQuarter === idDoQuarter),
       krsDoObjetivo: (idDoObjetivo) => okr.krs.filter(kr => kr.idDoObjetivo === idDoObjetivo),
-      abrirDialogoDeKr: (kr) => abrirDialogoDeKr(kr)
+      abrirDialogoDeKr: (kr) => abrirDialogoDeKr(kr),
+      novaKr: (idDoObjetivo) => dialogoNovaKr(idDoObjetivo),
     }
   })
 }
