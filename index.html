@@ -31,7 +31,7 @@
 
   <nav class="cabecalho">
     <img src="ativos/logo.svg" alt="Logo OKR" class="cabecalho__logo">
-    <button type="button" class="botao botao_com-icone" onclick="abrirDialogoDeCriacaoDeObjetivo()">
+    <button type="button" class="botao botao_com-icone" onclick="abrirDialogoDeCriacaoDeObjetivo('dialogoObjetivo')">
       <i data-feather="plus-circle"></i>
       Criar novo objetivo
     </button>
@@ -50,27 +50,26 @@
           </div>
 
           <div class="sessao__cabecalho-container-secundario">
-            <button type="button" class="botao botao_sem-fundo">
-              <i data-feather="more-vertical"></i>
+            <button type="button" class="botao botao_sem-fundo"> <i data-feather="more-vertical"></i>
             </button>
           </div>
         </div>
 
         <div class="sessao__conteudo">
-          <div class="sessao__item" v-for="item in krsDoObjetivo(objetivo.id)" onclick="fazerCheckin(this)"
+          <div class="sessao__item" v-for="kr in krsDoObjetivo(objetivo.id)" v-on:click="abrirDialogoDeKr(kr)"
             title=" Clique para fazer checkin">
             <div class="sessao__conteudo-primario-do-item">
-              <h2 class="titulo titulo_cinza titulo_pequeno">{{ item.nome }}</h2>
+              <h2 class="titulo titulo_cinza titulo_pequeno">{{ kr.nome }}</h2>
               <div class="regua">
                 <span class="regua__traco"
-                  v-bind:style="{width: (item.valorAtual - item.valorInicial) / (item.valorFinal - item.valorInicial) * 100  + '%'}"></span>
+                  v-bind:style="{width: (kr.valorAtual - kr.valorInicial) / (kr.valorFinal - kr.valorInicial) * 100  + '%'}"></span>
                 <div class="regua__valores">
-                  <span name="valorInicialkr1">{{ item.valorInicial }}</span>
+                  <span name="valorInicialkr1">{{ kr.valorInicial }}</span>
                   <span class="regua__valor-dinamico"
-                    v-bind:style="{left: (item.valorAtual - item.valorInicial) / (item.valorFinal - item.valorInicial) * 100  + '%'}">
-                    {{ ((item.valorAtual - item.valorInicial) / (item.valorFinal - item.valorInicial) * 100).toFixed(2)  + '%' }}
+                    v-bind:style="{left: (kr.valorAtual - kr.valorInicial) / (kr.valorFinal - kr.valorInicial) * 100  + '%'}">
+                    {{ ((kr.valorAtual - kr.valorInicial) / (kr.valorFinal - kr.valorInicial) * 100).toFixed(2)  + '%' }}
                   </span>
-                  <span name="valorFinalkr1">{{ item.valorFinal }}</span>
+                  <span name="valorFinalkr1">{{ kr.valorFinal }}</span>
                 </div>
               </div>
             </div>
@@ -96,7 +95,7 @@
     </div>
   </div>
 
-  <div class="dialogo">
+  <div class="dialogo" id="dialogoObjetivo">
     <div class="dialogo__corpo">
       <form class="formulario">
         <label for="quarter">Quarter</label>
@@ -117,7 +116,7 @@
 
 
     <div class="dialogo__rodape">
-      <button type="button" class="botao botao_branco botao_com-icone" onclick="fecharDialogo()">
+      <button type="button" class="botao botao_branco botao_com-icone" onclick="fecharDialogo('dialogoObjetivo')">
         <i data-feather="x"></i>
         Cancelar
       </button>
@@ -127,32 +126,46 @@
         Salvar objetivo
       </button>
     </div>
-  </div>>
+  </div>
+
+  <div class="dialogo" id="dialogoKr">
+    <div class="dialogo__corpo">
+      <h2 class="titulo" name="tituloDoObjetivo">Nome do objetivo</h2>
+
+      <form class="formulario">
+        <label for="inputKr">Insira o nome da sua Key Result</label>
+        <input type="text" id="inputKr">
+
+        <label for="valorInicial">Valor inicial</label>
+        <input type="number" id="valorInicial">
+
+        <label for="valorFinal">Valor Final</label>
+        <input type="number" id="valorFinal">
+
+        <label for="valorAtual">Valor Atual</label>
+        <input type="number" id="valorAtual">
+      </form>
+    </div>
+
+
+    <div class="dialogo__rodape">
+      <button type="button" class="botao botao_branco botao_com-icone" onclick="fecharDialogo('dialogoKr')">
+        <i data-feather="x"></i>
+        Cancelar
+      </button>
+
+      <button type="button" class="botao botao_com-icone" onclick="criarObjetivo()">
+        <i data-feather="save"></i>
+        Salvar KR
+      </button>
+    </div>
+  </div>
 
   <script>
-    let modal = document.querySelector('.dialogo')
 
-    function abrirDialogoDeCriacaoDeObjetivo() {
-      modal.classList.add('dialogo_aberto')
-      fecharDialogoComEsc()
-    }
-
-    function fecharDialogo() {
-      modal.classList.remove('dialogo_aberto')
-    }
-
-    function fecharDialogoComEsc() {
-      document.onkeydown = function (e) {
-        if (e.which == 27) {
-          fecharDialogo()
-        }
-      }
-    }
-
-    feather.replace()
   </script>
 
-  <script type="module" src="index.js"></script>
+  <script src="index.js"></script>
   <script src="firebase.js"></script>
 </body>
 
