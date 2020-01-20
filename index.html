@@ -2,22 +2,22 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="estilo.css">
-  <script src="https://unpkg.com/feather-icons"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:500,600,700&display=swap" rel="stylesheet">
-  <title>OKRme</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="estilo.css">
+	<script src="https://unpkg.com/feather-icons"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:500,600,700&display=swap" rel="stylesheet">
+	<title>OKRme</title>
 </head>
 
 <body>
 
-  <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-database.js"></script>
-  <script>
-    var firebaseConfig = {
+	<script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-database.js"></script>
+	<script>
+		var firebaseConfig = {
       apiKey: "AIzaSyCV_Utr9QyVsGG63mD8rZdYXy0xZdxVu4Q",
       authDomain: "thiago-dsign.firebaseapp.com",
       databaseURL: "https://thiago-dsign.firebaseio.com",
@@ -27,145 +27,148 @@
       appId: "1:17855283546:web:55607829a31d26ced33363"
     };
     firebase.initializeApp(firebaseConfig);
-  </script>
+	</script>
 
-  <nav class="cabecalho">
-    <img src="ativos/logo.svg" alt="Logo OKR" class="cabecalho__logo">
-    <button type="button" class="botao botao_com-icone" onclick="abrirDialogoDeCriacaoDeObjetivo('dialogoObjetivo')">
+	<nav class="cabecalho">
+		<img src="ativos/logo.svg" alt="Logo OKR" class="cabecalho__logo">
+		<button type="button" class="botao botao_com-icone" onclick="abrirDialogoDeCriacaoDeObjetivo('dialogoObjetivo')">
       <i data-feather="plus-circle"></i>
       Criar novo objetivo
     </button>
-  </nav>
+	</nav>
 
-  <div id="itemObjetivo">
+	<div id="itemObjetivo">
 
-    <div class="container container_com-margem" v-for="quarter in okr.quarters">
-      <h2 class="titulo">{{ quarter.nome }}</h2>
-      <section class="sessao" v-for="objetivo in objetivosDoQuarter(quarter.id)">
-        <div class="sessao__cabecalho">
-          <div class="sessao__cabecalho-container-primario">
-            <p class="texto texto_cinza texto_espacado">OBJETIVO</p>
-            <h2 class="titulo">{{ objetivo.nome }}</h2>
-            <p class="texto texto_cinza">{{ objetivo.descricao }}</p>
-          </div>
+		<div class="container container_com-margem" v-for="quarter in okr.quarters">
+			<h2 class="titulo">{{ quarter.nome }}</h2>
+			<section class="sessao" v-for="objetivo in objetivosDoQuarter(quarter.id)">
+				<div class="sessao__cabecalho">
+					<div class="sessao__cabecalho-container-primario">
+						<p class="texto texto_cinza texto_espacado">OBJETIVO</p>
+						<h2 class="titulo">{{ objetivo.nome }}</h2>
+						<p class="texto texto_cinza">{{ objetivo.descricao }}</p>
+					</div>
 
-          <div class="sessao__cabecalho-container-secundario">
-            <button type="button" class="botao botao_sem-fundo"> <i data-feather="more-vertical"></i>
+					<div class="sessao__cabecalho-container-secundario">
+						<button type="button" class="botao botao_sem-fundo"> <i data-feather="more-vertical"></i>
             </button>
-          </div>
-        </div>
+					</div>
+				</div>
 
-        <div class="sessao__conteudo">
-          <div class="sessao__item" v-for="kr in krsDoObjetivo(objetivo.id)" v-on:click="abrirDialogoDeKr(kr)"
-            title=" Clique para fazer checkin">
-            <div class="sessao__conteudo-primario-do-item">
-              <h2 class="titulo titulo_cinza titulo_pequeno">{{ kr.nome }}</h2>
-              <div class="regua">
-                <span class="regua__traco"
+				<div class="sessao__conteudo">
+					<div class="sessao__item" v-for="kr in krsDoObjetivo(objetivo.id)" v-on:click="abrirDialogoDeKr(kr)"
+						title=" Clique para fazer checkin">
+						<div class="sessao__conteudo-primario-do-item">
+							<h2 class="titulo titulo_cinza titulo_pequeno">{{ kr.nome }}</h2>
+							<div class="regua">
+								<span class="regua__traco"
                   v-bind:style="{width: (kr.valorAtual - kr.valorInicial) / (kr.valorFinal - kr.valorInicial) * 100  + '%'}"></span>
-                <div class="regua__valores">
-                  <span name="valorInicialkr1">{{ kr.valorInicial }}</span>
-                  <span class="regua__valor-dinamico"
+								<div class="regua__valores">
+									<span name="valorInicialkr1">{{ kr.valorInicial }}</span>
+									<span class="regua__valor-dinamico"
                     v-bind:style="{left: (kr.valorAtual - kr.valorInicial) / (kr.valorFinal - kr.valorInicial) * 100  + '%'}">
                     {{ ((kr.valorAtual - kr.valorInicial) / (kr.valorFinal - kr.valorInicial) * 100).toFixed(2)  + '%' }}
                   </span>
-                  <span name="valorFinalkr1">{{ kr.valorFinal }}</span>
-                </div>
-              </div>
-            </div>
-            <button class="botao botao_com-icone botao_pequeno">
+									<span name="valorFinalkr1">{{ kr.valorFinal }}</span>
+								</div>
+							</div>
+						</div>
+						<button class="botao botao_com-icone botao_pequeno">
               <i data-feather="map-pin"></i>
               Checkin
             </button>
-          </div>
-        </div>
+					</div>
+					<div class="u-alinhar-ao-centro">
+						<h3 class="titulo titulo_pequeno">Crie sua primeira KR</h3>
+						<button class="botao" v-on:click="novaKr(objetivo.id)">Criar KR</button>
+					</div>
+				</div>
 
-        <div class="sessao__rodape">
-          <div>
-            <h3 class="titulo titulo_pequeno">Total do objetivo</h3>
-            <div class="regua">
-              <span class="regua__traco" style="width: 71.75%"></span>
-              <div class="regua__valores">
-                <span>0%</span>
-                <span class="regua__valor-dinamico" style="left: 71.75%">71.75%</span>
-                <span>100%</span>
-              </div>
-            </div>
-          </div>
-          <div class="u-alinhar-ao-centro">
-            <h3 class="titulo titulo_pequeno">Crie sua primeira KR</h3>
-            <button class="botao" v-on:click="novaKr(objetivo.id)">Criar KR</button>
-          </div>
-        </div>
-      </section>
-    </div>
-  </div>
+				<div class="sessao__rodape">
 
-  <div class="dialogo" id="dialogoObjetivo">
-    <div class="dialogo__corpo">
-      <form class="formulario" id="formularioObjetivo" onsubmit="criarObjetivo()">
-        <label for="quarter">Quarter</label>
-        <select name="selecaoQuarter" id="selecaoQuarter">
+					<hr />
+
+					<div>
+						<h3 class="titulo titulo_pequeno">Total do objetivo</h3>
+						<div class="regua">
+							<span class="regua__traco" style="width: 71.75%"></span>
+							<div class="regua__valores">
+								<span>0%</span>
+								<span class="regua__valor-dinamico" style="left: 71.75%">71.75%</span>
+								<span>100%</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<div class="dialogo" id="dialogoObjetivo">
+		<div class="dialogo__corpo">
+			<form class="formulario" id="formularioObjetivo" onsubmit="criarObjetivo()">
+				<label for="quarter">Quarter</label>
+				<select name="selecaoQuarter" id="selecaoQuarter">
           <option value="1">Quarter 1 - 2019</option>
         </select>
 
-        <label for="nomeDoObjetivo">Nome do objetivo</label>
-        <input type="text" id="nomeDoObjetivo">
+				<label for="nomeDoObjetivo">Nome do objetivo</label>
+				<input type="text" id="nomeDoObjetivo">
 
-        <label for="descricaoDoObjetivo">Descrição</label>
-        <textarea rows="3" id="descricaoDoObjetivo"></textarea>
-      </form>
-    </div>
+				<label for="descricaoDoObjetivo">Descrição</label>
+				<textarea rows="3" id="descricaoDoObjetivo"></textarea>
+			</form>
+		</div>
 
 
-    <div class="dialogo__rodape">
-      <button type="button" class="botao botao_branco botao_com-icone" onclick="fecharDialogo('dialogoObjetivo')">
+		<div class="dialogo__rodape">
+			<button type="button" class="botao botao_branco botao_com-icone" onclick="fecharDialogo('dialogoObjetivo')">
         <i data-feather="x"></i>
         Cancelar
       </button>
 
-      <button type="submit" form="formularioObjetivo" class="botao botao_com-icone">
+			<button type="submit" form="formularioObjetivo" class="botao botao_com-icone">
         <i data-feather="save"></i>
         Salvar objetivo
       </button>
-    </div>
-  </div>
+		</div>
+	</div>
 
-  <div class="dialogo" id="dialogoKr">
-    <div class="dialogo__corpo">
-      <h2 class="titulo" name="tituloDoObjetivo">Nome do objetivo</h2>
+	<div class="dialogo" id="dialogoKr">
+		<div class="dialogo__corpo">
+			<h2 class="titulo" name="tituloDoObjetivo">Nome do objetivo</h2>
 
-      <form class="formulario">
-        <label for="inputKr">Insira o nome da sua Key Result</label>
-        <input type="text" id="inputKr">
+			<form class="formulario">
+				<label for="inputKr">Insira o nome da sua Key Result</label>
+				<input type="text" id="inputKr">
 
-        <label for="valorInicial">Valor inicial</label>
-        <input type="number" id="valorInicial">
+				<label for="valorInicial">Valor inicial</label>
+				<input type="number" id="valorInicial">
 
-        <label for="valorFinal">Valor Final</label>
-        <input type="number" id="valorFinal">
+				<label for="valorFinal">Valor Final</label>
+				<input type="number" id="valorFinal">
 
-        <label for="valorAtual">Valor Atual</label>
-        <input type="number" id="valorAtual">
+				<label for="valorAtual">Valor Atual</label>
+				<input type="number" id="valorAtual">
       </form>
-    </div>
+		</div>
 
 
-    <div class="dialogo__rodape">
-      <button type="button" class="botao botao_branco botao_com-icone" onclick="fecharDialogo('dialogoKr')">
+		<div class="dialogo__rodape">
+			<button type="button" class="botao botao_branco botao_com-icone" onclick="fecharDialogo('dialogoKr')">
         <i data-feather="x"></i>
         Cancelar
       </button>
 
-      <button type="button" class="botao botao_com-icone" onclick="criarObjetivo()">
+			<button type="button" class="botao botao_com-icone" onclick="criarObjetivo()">
         <i data-feather="save"></i>
         Salvar KR
       </button>
-    </div>
-  </div>
+		</div>
+	</div>
 
-  <script src="index.js"></script>
-  <script src="firebase.js"></script>
+	<script src="index.js"></script>
+	<script src="firebase.js"></script>
 </body>
 
 </html>
