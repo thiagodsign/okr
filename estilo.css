@@ -62,8 +62,9 @@ hr.divisor {
   transition: all ease 0.2s;
 }
 
-.botao:hover, .botao:focus {
- border-color: var(--cor-primaria);
+.botao:hover,
+.botao:focus {
+  border-color: var(--cor-primaria);
 }
 
 .botao:active {
@@ -332,5 +333,45 @@ hr.divisor {
 .container-criar-kr {
   padding: 24px 0;
   text-align: center;
+}
 
+.dropdown {
+  position: relative;
+  z-index: 1;
+}
+
+.dropdown__lista {
+  list-style-type: none;
+  padding: 0;
+  background-color: white;
+  position: absolute;
+  right: 0;
+  box-shadow: 4px 0 16px black;
+  width: 0px;
+  overflow: hidden;
+  transition: ease all 0.3s;
+}
+
+.dropdown__lista:hover,
+.dropdown__lista:focus,
+.dropdown__lista:focus-within {
+  width: 200px;
+}
+
+.dropdown__ativador:focus ~ .dropdown__lista {
+  width: 200px;
+}
+
+.dropdown__lista .botao {
+  background: none;
+  font-size: 14px;
+  border: none;
+  width: 100%;
+  border-radius: 0;
+  min-width: 200px;
+}
+
+.dropdown__lista .botao:hover,
+.dropdown__lista .botao:focus {
+  background-color: var(--cor-primaria-clara);
 }

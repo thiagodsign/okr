@@ -51,23 +51,21 @@
 
 					<div class="sessao__cabecalho-container-secundario">
 						<div class="dropdown">
-							<button type="button" class="botao botao_sem-fundo">
+							<button type="button" class="botao botao_sem-fundo dropdown__ativador">
 								<i data-feather="more-vertical"></i>
 							</button>
 
-							<div class="dropdown__conteudo">
-								<ul>
-									<li>
-										<button>Adicionar KR</button>
-									</li>
-									<li>
-										<button>Editar Objetivo</button>
-									</li>
-									<li>
-										<button>Excluir objetivo</button>
-									</li>
-								</ul>
-							</div>
+							<ul class="dropdown__lista">
+								<li>
+									<button class="botao" v-on:click="novaKr(objetivo.id)">Adicionar KR</button>
+								</li>
+								<li>
+									<button class="botao">Editar Objetivo</button>
+								</li>
+								<li>
+									<button class="botao">Excluir objetivo</button>
+								</li>
+							</ul>
 						</div>
 
 					</div>
