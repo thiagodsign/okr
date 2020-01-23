@@ -4,14 +4,14 @@ function criarQuarter() {
   firebase.database().ref('okr/quarters/').set([
     {
       id: 1,
-      ano: 2019,
-      nome: 'Q1 / 2019',
+      ano: 2020,
+      nome: 'Q1 / 2020',
       periodoDoAno: 1
     },
     {
       id: 2,
-      ano: 2019,
-      nome: 'Q1 / 2018',
+      ano: 2020,
+      nome: 'Q2 / 2020',
       periodoDoAno: 2
     }
   ])
@@ -20,11 +20,7 @@ function criarQuarter() {
 function criarObjetivo() {
   let idDoObjetivo;
 
-  if (okr.objetivos && okr.objetivos.length) {
-    idDoObjetivo = okr.objetivos.length
-  } else {
-    idDoObjetivo = 0
-  }
+  idDoObjetivo = 0
 
   let nome = document.getElementById('nomeDoObjetivo').value
   let idQuarter = document.getElementById('selecaoQuarter').value
